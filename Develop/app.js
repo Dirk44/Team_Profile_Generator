@@ -131,7 +131,100 @@ function addEngineer() {
                 }
             }
         }, 
-    ])
+        {
+            type: "input",
+            name: "engineerEmail",
+            message: "Whats the Email of the Engineer you want to add?",
+            validate: (engineerEmail) => {
+                if (engineerEmail) {
+                    return true;
+                }
+                else {
+                    console.log("Enter the Email of the Engineer you want to add.");
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "engineerGithub",
+            message: "Whats the Github page of the Engineer you want to add?",
+            validate: (engineerGithub) => {
+                if (engineerGithub) {
+                    return true;
+                }
+                else {
+                    console.log("Enter the nameof the Engineer you want to add.");
+                }
+            }
+        },
+    ]).then(response => {
+        const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub);
+        team.push(engineer);
+        addTeam();
+        });
+    
+}
+
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internName",
+            message: "Whats the name of the Intern you want to add?",
+            validate: (internName) => {
+                if (internName) {
+                    return true;
+                }
+                else {
+                    console.log("Enter the name of the Intern you want to add.");
+                }
+            }
+        },
+
+        {
+            type: "input",
+            name: "InternId",
+            message: "Whats the ID of the Intern you want to add?",
+            validate: (InternId) => {
+                if (InternId) {
+                    return true;
+                }
+                else {
+                    console.log("Enter the name of the Intern you want to add.");
+                }
+            }
+        }, 
+        {
+            type: "input",
+            name: "InternEmail",
+            message: "Whats the Email of the Intern you want to add?",
+            validate: (InternEmail) => {
+                if (InternEmail) {
+                    return true;
+                }
+                else {
+                    console.log("Enter the Email of the Intern you want to add.");
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "InternSchool",
+            message: "Whats the School of the Intern you want to add?",
+            validate: (InternSchool) => {
+                if (InternSchool) {
+                    return true;
+                }
+                else {
+                    console.log("Enter the nameof the Engineer you want to add.");
+                }
+            }
+        },
+    ]).then(response => {
+        const intern = new Intern(response.internName, response.InternId, response.InternEmail, response.InternSchool);
+        team.push(intern);
+        addTeam();
+    });
 }
 
 // After the user has input all employees desired, call the `render` function (required
