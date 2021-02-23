@@ -48,7 +48,7 @@ function createManager() {
         {
             type: "input",
             name: "managerEmail",
-            message: "What is the manager's ID?",
+            message: "What is the manager's Email?",
             validate: (managerEmail) => {
                 if (managerEmail) {
                     return true;
@@ -85,7 +85,7 @@ function addTeam() {
             type: "list",
             name: "memberType",
             message: "Which type of team member are you adding?",
-            choices: ["Engineer", "Intern"]
+            choices: ["Manager", "Engineer", "Intern"]
         }
     ]).then(picked => {
         switch (picked.memberType) {
