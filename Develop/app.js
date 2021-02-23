@@ -9,7 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-const { listenerCount } = require("process");
+
 const team = [];
 
 
@@ -96,11 +96,13 @@ function addTeam() {
                     addIntern();
                     break;
                     case "I don't need to add anymore team members.":
-                        buildTeam();
+                        renderTeam();
                         break;
         }
     })
 }
+
+// Engineer input info.
 
 function addEngineer() {
     inquirer.prompt([
@@ -113,7 +115,7 @@ function addEngineer() {
                     return true;
                 }
                 else {
-                    console.log("Enter the nameof the Engineer you want to add.");
+                    console.log("Enter the Name of the Engineer you want to add.");
                 }
             }
         },
@@ -127,7 +129,7 @@ function addEngineer() {
                     return true;
                 }
                 else {
-                    console.log("Enter the name of the Engineer you want to add.");
+                    console.log("Enter the ID of the Engineer you want to add.");
                 }
             }
         }, 
@@ -153,10 +155,13 @@ function addEngineer() {
                     return true;
                 }
                 else {
-                    console.log("Enter the nameof the Engineer you want to add.");
+                    console.log("Enter the Github page of the Engineer you want to add.");
                 }
             }
         },
+        
+        //Create and push new Engineer.
+
     ]).then(response => {
         const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub);
         team.push(engineer);
@@ -164,6 +169,8 @@ function addEngineer() {
         });
     
 }
+
+// Intern input info.
 
 function addIntern() {
     inquirer.prompt([
@@ -190,7 +197,7 @@ function addIntern() {
                     return true;
                 }
                 else {
-                    console.log("Enter the name of the Intern you want to add.");
+                    console.log("Enter the ID of the Intern you want to add.");
                 }
             }
         }, 
@@ -216,20 +223,29 @@ function addIntern() {
                     return true;
                 }
                 else {
-                    console.log("Enter the nameof the Engineer you want to add.");
+                    console.log("Enter the School of the Intern you want to add.");
                 }
             }
         },
+
+        //Create and push new intern.
+
+
     ]).then(response => {
         const intern = new Intern(response.internName, response.InternId, response.InternEmail, response.InternSchool);
         team.push(intern);
         addTeam();
     });
-}
 
+}
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+    function renderTeam() {
+        fs.writeFileSync(outputPath, render(team));
+    }
+   
+    createManager();
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
