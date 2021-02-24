@@ -1,0 +1,28 @@
+
+
+.jumbotron {
+    background-color: rgb(134, 19, 19);
+    font-style: oblique;
+    color: black;
+}
+
+h1 {
+    font-size: 5rem;
+    text-shadow: 2px 2px 5px #49207a;
+}
+
+
+.row2 {
+    display: inline-block;
+}
+
+.card {
+    padding: 10px;
+}
+
+.employee-card {
+    padding: 10px;
+    margin: 10px;
+    color: rgb(0, 0, 0);
+    box-shadow: 5px 5px 9px #000000;
+}

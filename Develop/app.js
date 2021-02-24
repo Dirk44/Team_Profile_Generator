@@ -16,7 +16,7 @@ const team = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-function createManager() {
+function getManager() {
     console.log("Build your Team!");
     inquirer.prompt([
         {
@@ -85,7 +85,7 @@ function addTeam() {
             type: "list",
             name: "memberType",
             message: "Which type of team member are you adding?",
-            choices: ["Manager", "Engineer", "Intern"]
+            choices: ["Engineer", "Intern", "I don't need to add anymore team members."]
         }
     ]).then(picked => {
         switch (picked.memberType) {
@@ -245,7 +245,7 @@ function addIntern() {
         fs.writeFileSync(outputPath, render(team));
     }
    
-    createManager();
+    getManager();
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
