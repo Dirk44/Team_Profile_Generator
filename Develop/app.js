@@ -36,8 +36,11 @@ function getManager() {
             type: "input",
             name: "managerId",
             message: "What is the manager's ID?",
-            validate: (managerId) => {
-                if (managerId) {
+            validate: managerId => {
+                const validId = managerId.match(
+                    /^[1-9]\d*$/
+                );
+                if (validId) {
                     return true;
                 }
                 else {
@@ -49,8 +52,11 @@ function getManager() {
             type: "input",
             name: "managerEmail",
             message: "What is the manager's Email?",
-            validate: (managerEmail) => {
-                if (managerEmail) {
+            validate: managerEmail => {
+                const validEmail = managerEmail.match(
+                /\S+@\S+\.\S+/);
+
+                if (validEmail) {
                     return true;
                 }
                 else {
@@ -62,8 +68,11 @@ function getManager() {
             type: "input",
             name: "managerOfficeNumber",
             message: "What is the manager's Office Number?",
-            validate: (managerOfficeNumber) => {
-                if (managerOfficeNumber) {
+            validate: managerOfficeNumber => {
+                const validOffice = managerOfficeNumber.match(
+                    /^[1-9]\d*$/
+                );
+                if (validOffice) {
                     return true;
                 }
                 else {
@@ -124,8 +133,11 @@ function addEngineer() {
             type: "input",
             name: "engineerId",
             message: "Whats the ID of the Engineer you want to add?",
-            validate: (engineerId) => {
-                if (engineerId) {
+            validate: engineerId => {
+                const validId = engineerId.match(
+                    /^[1-9]\d*$/
+                );
+                if (validId) {
                     return true;
                 }
                 else {
@@ -137,8 +149,11 @@ function addEngineer() {
             type: "input",
             name: "engineerEmail",
             message: "Whats the Email of the Engineer you want to add?",
-            validate: (engineerEmail) => {
-                if (engineerEmail) {
+            validate: engineerEmail => {
+                const validEmail = engineerEmail.match(
+                    /\S+@\S+\.\S+/
+                    );
+                if (validEmail) {
                     return true;
                 }
                 else {
@@ -150,7 +165,7 @@ function addEngineer() {
             type: "input",
             name: "engineerGithub",
             message: "Whats the Github page of the Engineer you want to add?",
-            validate: (engineerGithub) => {
+            validate: engineerGithub => {
                 if (engineerGithub) {
                     return true;
                 }
@@ -192,8 +207,11 @@ function addIntern() {
             type: "input",
             name: "InternId",
             message: "Whats the ID of the Intern you want to add?",
-            validate: (InternId) => {
-                if (InternId) {
+            validate: (internId) => {
+                const validId = internId.match(
+                    /^[1-9]\d*$/
+                );
+                if (validId) {
                     return true;
                 }
                 else {
@@ -205,8 +223,11 @@ function addIntern() {
             type: "input",
             name: "InternEmail",
             message: "Whats the Email of the Intern you want to add?",
-            validate: (InternEmail) => {
-                if (InternEmail) {
+            validate: internEmail => { 
+                const validEmail = internEmail.match(
+                    /\S+@\S+\.\S+/
+                    );
+                if (validEmail) {
                     return true;
                 }
                 else {
@@ -218,7 +239,7 @@ function addIntern() {
             type: "input",
             name: "InternSchool",
             message: "Whats the School of the Intern you want to add?",
-            validate: (InternSchool) => {
+            validate: InternSchool => {
                 if (InternSchool) {
                     return true;
                 }
